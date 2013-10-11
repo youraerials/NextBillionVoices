@@ -1,0 +1,54 @@
+
+- swappable pin creative
+
+- is it possible to make it more clear what the 1B selector does? Any recommendations on how to do so?
+
+- new visual design for left nav
+
+- final copy
+
+- create language files all point to english
+
+- rate limit refactor for clients (say, max 1 remote event per 200ms?)
+
+- listen to sounds by region (country)
+
+- region scoped to just country
+
+- try border 100% on FF and a webkit-mask for others?
+
+- point domain to new production IP 66.135.48.43
+
+- test for 1000 concurrent sessions per second
+
+  - scale to maybe 50000 concurrent sessions per second??
+
+- windowing for events on client
+
+- need the URL that the socket makes CX to
+
+- finish adding event tagging as well
+
+- pete wants "you are connecting from" language
+
+- list browsers / environments we support
+
+- share on FB, rather than like?
+
+- will get new auto-pop text for share links from marketing
+
+- favicon
+
+- share images on FB, etc
+
+- FFOS theme as first customization
+
+- submit copy for localization
+
+- web audio support?
+
+- disable apache logging
+
+- alternate / random colors for markers
+
+- 

@@ -1,0 +1,252 @@
+/**************
+*
+* screen.css
+*
+/**************/
+
+/* ------- HTML ELEMENTS ------- */
+
+
+
+@font-face {
+	font-family: "MuseoSans";
+	src: url(MuseoSans_500.otf) format("opentype");
+	}
+
+#container {
+	width: 800px;
+	height: 800px;
+	overflow: hidden;
+	background: #22272c url("images/wallpaper.png") repeat center top;
+	
+	
+}
+
+#earth {
+	position: absolute;
+	margin-top:-10px;
+	margin-left: 80px;
+	width: 800px;
+	height: 800px;
+}	
+
+#globe {
+	position: absolute;
+	margin: 0px auto;
+	z-index: 2;
+	width: 800px;
+	height: 800px;
+	border-radius: 100%;
+	overflow: hidden;
+	
+	box-shadow: 
+		6px 6px 12px 4px rgba(255,255,255,1) inset, 
+		0px 0px 4px 2px rgba(255,255,255,0.2) inset, 
+		0px 0px 48px 8px rgba(0,150,221,1) inset, 
+		0px 0px 24px 0px rgba(0,150,221,1) inset, 
+		0px 0px 128px 24px rgba(0,83,159,1) inset,
+		0px 0px 192px 24px rgba(0,83,159,0.4) inset,
+		0px 0px 192px 24px rgba(0,150,221,0.4) inset,
+		0px 0px 128px 12px rgba(0,150,221,0.3),
+		0px 0px 24px 6px rgba(0,150,221,0.4);
+	
+	background: #000000 url('images/earth.jpg') no-repeat top left;
+/* 	background-size: 1838px 500px; */
+
+/* 	animation: map-move 20s linear infinite; */
+	
+/* 	transform: translate3d(1px, 1px, 0); */
+
+}
+
+@keyframes map-move {
+  
+  0% {
+
+    transform: translate(0, 0);
+  }
+  
+  100% {
+  
+    transform: translate(-1000px, 0);
+    
+  }
+  
+}
+
+
+#globe-map {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3676px;
+  height: 1000px;
+  
+  background: #000000 url('images/earth.jpg') no-repeat top left;
+
+	animation: world-spin 20s linear infinite;
+	
+	transform: translate3d(0,0,0);
+	
+	border-radius: 100%;
+  
+}
+
+
+
+@keyframes world-spin {
+  
+  0% {
+    transform: translate3d(0,0,0);
+  }
+  100% {
+    transform: translate3d(-2876px,0,0);
+  }
+  
+}
+
+
+
+
+#highlight {
+	position: absolute;
+	z-index: 4;
+	top: 8%;
+	left: -8%;
+	width: 60%;
+	height: 30%;
+	border-radius: 100%;
+	transform: rotate(-45deg);
+	background: transparent -moz-radial-gradient(50% 50%, ellipse farthest-corner, rgba(255,255,255,0.5) 12%, rgba(255,255,255,0.3) 36%, rgba(255,255,255,0) 65%);
+
+}
+
+#shadow {
+	position: absolute;
+	z-index: 1;
+	top: 58%;
+	left: 0px;
+	width: 100%;
+	height: 55%;
+	border-radius: 100%;
+	background: transparent -moz-radial-gradient(50% 50%, ellipse farthest-corner, rgba(0,0,0,1) 32%, rgba(0,0,0,0.9) 38%, rgba(0,0,0,0.5) 42%, rgba(0,0,0,0.3) 46%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0) 70%);
+	
+
+}
+
+
+
+
+/*		Default Layout: 992px. 
+		Gutters: 24px.
+		Outer margins: 48px.
+		Leftover space for scrollbars @1024px: 32px.
+-------------------------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8      9      10
+px      68    160    252    344    436    528    620    712    804    896    */
+
+
+#xearth {
+	position: relative;
+	margin: 0px auto;
+	margin-top:60px;
+	margin-left: -100px;
+	width: 800px;
+	height: 800px;
+}
+
+
+/*		Tablet Layout: 768px.
+		Gutters: 24px.
+		Outer margins: 28px.
+		Inherits styles from: Default Layout.
+-----------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8
+px      68    160    252    344    436    528    620    712    */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+#xearth {
+	position: relative;
+	margin: 0px auto;
+	margin-top:30px;
+	margin-left: -100px;
+	width: 600px;
+	height: 600px;
+}	
+
+}
+
+/*		Mobile Layout: 320px.
+		Gutters: 24px.
+		Outer margins: 34px.
+		Inherits styles from: Default Layout.
+---------------------------------------------
+cols    1     2      3
+px      68    160    252    */
+
+@media only screen and (max-width: 480px) {
+	
+#xcontainer {
+	background: #22272c url("images/wallpaper.png") repeat center top;	
+}
+
+#xearth {
+	margin: 0px auto;
+	margin-top:-10px;
+	margin-left: -150px;
+	width: 300px;
+	height: 300px;
+}
+	
+}
+
+/*		Wide Mobile Layout: 480px.
+		Gutters: 24px.
+		Outer margins: 22px.
+		Inherits styles from: Default Layout, Mobile Layout.
+------------------------------------------------------------
+cols    1     2      3      4      5
+px      68    160    252    344    436    */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+  #xcontainer {
+  	background: #22272c url("images/wallpaper.png") repeat center top;	
+  }
+  
+  #xearth {
+  	position: relative;
+  	margin: 0px auto;
+  	margin-top:-10px;
+  	margin-left: -200px;
+  	width: 400px;
+  	height: 400px;
+  }	
+
+}
+
+/*	Retina media query.
+	Overrides styles for devices with a 
+	device-pixel-ratio of 2+, such as iPhone 4.
+-----------------------------------------------    */
+
+@media 
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (min--moz-device-pixel-ratio: 2),
+	only screen and (min-resolution: 2dppx),
+	only screen and (min-device-pixel-ratio: 2) {
+
+  #xearth {
+  	position: relative;
+  	margin: 0px auto;
+  	margin-top:-10px;
+  	margin-left: -600px;
+  	width: 1200px;
+  	height: 1200px;
+  }	
+	
+
+}
+

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html manifest="manifest.appcache">
+	<head>
+		<title data-d-localize-key="title">Mozilla: The Next Billion Voices</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		
+		<meta property="og:title" content="Mozilla: The Next Billion Voices">
+		<meta property="og:url" content="http://nextbillionvoices.com">
+		<!-- static styles -->
+				
+		<link rel="stylesheet" href="dclare/css/dclare.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
+		
+		<link rel="stylesheet" href="views/bloom/style.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="social-share/socialshare.min.css" media="screen" type="text/css">
+		
+		<style>
+		  
+		  body {
+  
+        margin: 0;
+        padding: 0;
+        
+        /* min-height: 500px; */
+        
+        background: #000 url(views/globe/new/bgBottom.png) top left repeat;
+        font-weight: 400;
+        font-size: 14px;
+        
+        font-family: 'Open Sans',sans-serif;
+        
+        user-select: none;
+        
+/*         overflow: hidden; */
+        min-height: 1500px;
+      
+      }
+      		  
+		  #bg-repeat {
+  		  
+  		  position: absolute;
+  		  top: 0;
+  		  left: 0;
+  		  width: 150%;
+  		  height: 1000px;
+  		  
+  		  background: url(views/globe/new/bgSides.png) repeat-x;
+  		  background-size: 60px 1000px;
+  		  background-position: 0px 0px;
+  		  
+  		  transform: translate(-150px, -87px) scale(0.831);
+  		  
+		  }
+		  
+  		@font-face {
+        font-family: 'Open Sans Light';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Open Sans Light'), local('OpenSans-Light'), url(osl.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(os.woff) format('woff');
+      }
+
+		  #loader-stage {
+		  
+  		  position: absolute;
+  		  bottom: 60px;
+  		  left: -28px;
+  		  z-index: 2000;
+  		  width: 100%;
+  		  height: 30px;
+  		  text-align: center;
+  		  
+		  }
+
+      #loader {
+        
+        position: absolute;
+        top: 12px;
+        left: -3px;
+        
+        width: 164px;
+        height: 6px;
+        pointer-events: none;
+        overflow: hidden;
+        -webkit-transform: scale(0.5);
+        -moz-transform: scale(0.5);
+        transform: scale(0.5);
+        border: 1px solid #ccc;
+        border-radius: 3px;
+
+      }
+      
+      #loader #loader-pg {
+      
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1%;
+        height: 6px;
+        background: #999;
+        border-radius: 3px;
+        
+      }
+      
+      #moz-brand {
+
+        position: absolute;
+        
+        bottom: -48px;
+        left: -30px;
+        
+        width: 70%;
+        height: 79px;
+        font-family: 'Open Sans Light', sans-serif;
+        font-size: 7px;
+        color: rgba(255,255,255,0.3);
+        padding-left: 38px;
+        padding-top: 56px;
+        background: url(images/mozilla_logo.png) top left no-repeat;
+        user-select: none;
+        pointer-events: none;
+        
+      }
+      
+    </style>
+    
+    <script src="dclare/js/dclare-lib.js"></script>
+		
+	</head>
+	
+	<body class="no-touchmove">
+	
+	  <div id="bg-repeat"></div>
+	
+	
+	  <div id="app-container" class="dclare-container no-touchmove">
+  	  
+  	  <div id="globe" data-d="view: globe / animate"></div>
+<!--   	  <div id="flatglobe" data-d="view: flatglobe / animate"></div> -->
+  	  <div id="welcome-msg" data-d="view: welcome / animate"></div>
+  	 
+	  </div>
+	  
+	  <div id="bloomers" class="no-touchmove"></div>
+	  
+
+	  <div id="moz-brand">
+  	  <span data-d-localize-key="footer1"></span><br><span data-d-localize-key="footer2"></span>
+	  </div>
+
+	  
+	  <div id="info" data-d="view: info / animate"></div> 
+	  
+    <div id="app-client-counter" class="no-touchmove">
+      <div class="client-dot"></div>
+    </div>
+	  
+	  
+	  <audio id="t-all-1" autoload>
+  	  <source src="media/all.ogg" type="audio/ogg">
+  	  <source src="media/all.mp3" type="audio/mp3">
+	  </audio>
+	  <audio id="t-all-2" autoload>
+  	  <source src="media/all.ogg" type="audio/ogg">
+  	  <source src="media/all.mp3" type="audio/mp3">
+	  </audio>
+	  <audio id="t-all-3" autoload>
+  	  <source src="media/all.ogg" type="audio/ogg">
+  	  <source src="media/all.mp3" type="audio/mp3">
+	  </audio>
+	  
+	    
+  <div id="loader-stage">
+    
+    
+    <div id="loader">
+    
+      <div id="loader-pg"></div>
+      
+    </div> 
+  
+  
+  </div>
+  
+	 <!-- load some SCRIPTZ -->
+	 <!-- dclare libs -->
+	  
+	  <script>
+	  	  
+	  	var loaderComplete = 0;
+	  	var loaderElement = document.getElementById("loader-pg");
+	  	var intv = setInterval(function() {
+	  	  if (loaderComplete > 100) {
+  	  	  clearInterval(intv);
+  	  	  
+  	  	  document.getElementById("loader-stage").style.display = "none";
+  	  	  
+  	  	  if ($ && $("#welcome-msg")) {
+    	  	  
+    	  	  $("#welcome-msg").prepend(
+    	  	  
+    	  	    $("#loader-container")
+    	  	  
+    	  	  );
+    	  	  
+  	  	  }
+  	  	  
+	  	  }
+	  	  else {
+	  	    window.scrollTo(0, 1);
+  	  	  loaderComplete += 3;
+  	  	  loaderElement.style.width = loaderComplete + "%";
+	  	  
+	  	  }
+	  	
+	  	}, 110);
+	  	
+	  </script>
+	  
+		
+		<script src="dclare/js/dclare.js"></script>
+		<script src="js/application.js"></script>
+		
+		<!-- view delegates -->
+		<script src="views/globe/delegate.js"></script>
+		<script src="views/bloom/delegate.js"></script>
+		<script src="views/welcome/delegate.js"></script>
+		<script src="views/info/delegate.js"></script>
+		
+		<script type="text/javascript">
+		
+		  var _gaq = false;
+    
+      setTimeout(function() {
+      
+      
+    
+        
+        // load testing: 
+        
+        // generate random clicks on globe to stress test socket server and render performance
+        
+        var testIntervalTime = 1000;
+        
+        //event_interval=100
+        
+        var s = window.location.toString();
+        
+        if ( s.indexOf("?") > -1) {
+          
+          var nvRaw = s.substring(s.indexOf("?")+1);
+          var interval = nvRaw.split("=")[1]; // just throwing caution to the wind for this, if you add more params that's YOUR fauly! ;-)
+          
+          
+          testIntervalTime = parseInt(interval);
+          
+          
+        }
+        
+        dApplication.views["welcome-msg"].hide();
+        $("#globe").removeClass("right-pos");
+        $(".info").removeClass("hidden-left");
+        
+        
+        var testInterval = setInterval(function() {
+        
+          var fakeEvent = {pageX: Math.round(Math.random() * 700), pageY: Math.round(Math.random() * 700)};
+        
+          dApplication.views["globe"].delegate.triggerSound(fakeEvent);
+        
+        
+        }, testIntervalTime);
+      
+      
+      }, 2000);
+      
+    </script>
+		
+		<!-- END SCRIPTZ -->
+	
+	</body>
+	
+</html>
+
+
